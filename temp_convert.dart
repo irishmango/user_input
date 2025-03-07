@@ -17,7 +17,7 @@ void main() {
       
       if (fahrenheit != null) {
         break; // Exit loop if valid number
-      }
+      } else 
       print("Invalid input! Please enter a valid number.");
     }
 
@@ -35,7 +35,7 @@ void main() {
       
       if (celsius != null) {
         break; // Exit loop if valid number
-      }
+      } else 
       print("Invalid input! Please enter a valid number.");
     }
 
