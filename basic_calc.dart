@@ -60,10 +60,8 @@ void main() {
     }
 
     // Result is given 
-    if (validInput) {
       print("The result is: $result. \nCongratulations, $firstName! A successful first console program!");
     }
   }
 
 
-}
