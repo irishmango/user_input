@@ -20,11 +20,13 @@ void main() {
   print("Choose a value for x: ");
   String? inputX = stdin.readLineSync();
   x = inputX != null && inputX.isNotEmpty ? double.parse(inputX) : 0;
+  print("x = $x");
 
   // Get y value
   print("Now choose a value for y: ");
   String? inputY = stdin.readLineSync();
   y = inputY != null && inputY.isNotEmpty ? double.parse(inputY) : 0;
+  print("y = $y");
 
   String? inputCommand;
   double result;
