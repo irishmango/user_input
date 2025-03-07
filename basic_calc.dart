@@ -32,6 +32,7 @@ void main() {
   double result;
   bool validInput = false;
 
+  // The user chooses the operator
   while (!validInput) {
     print("Now choose what you'd like to do with the two numbers: \n + \n - \n / \n *");
     inputCommand = stdin.readLineSync();
@@ -58,6 +59,7 @@ void main() {
         continue; // Restart the loop if the user enters an invalid operation
     }
 
+    // Result is given 
     if (validInput) {
       print("The result is: $result. \nCongratulations, $firstName! A successful first console program!");
     }
