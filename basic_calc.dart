@@ -57,7 +57,7 @@ void main() {
     }
 
     if (validInput) {
-      print("The result is: $result");
+      print("The result is: $result. \nCongratulations, $firstName! A successful first console program!");
     }
   }
 
