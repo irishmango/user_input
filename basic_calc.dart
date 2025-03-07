@@ -40,20 +40,20 @@ void main() {
     switch (inputCommand) {
       case "+":
         result = x + y;
-        validInput = true;
+        validInput = true; //Breaks while loop
       case "-":
         result = x - y;
-        validInput = true;
+        validInput = true; //Breaks while loop
       case "/":
         if (y == 0) {
           print("Division by zero is not allowed. Please try again.");
           continue; // Restart the while loop if division by zero
         } else 
         result = x / y;
-        validInput = true;
+        validInput = true; //Breaks while loop
       case "*":
         result = x * y;
-        validInput = true;
+        validInput = true; //Breaks while loop
       default:
         print("Invalid input. Please enter a valid operation.");
         continue; // Restart the while loop if the user enters an invalid operation
