@@ -14,8 +14,8 @@ void main() {
       if (billAmount != null) {
         print("Your bill total is: $billAmount€");
         break; // Exit loop if valid number
-      }
-      print("Invalid input! Please enter a valid number.");
+      } else 
+        print("Invalid input! Please enter a valid number.");
     }
 
   // User enters tip %
@@ -27,8 +27,8 @@ void main() {
       if (tipPercentage != null) {
         print("You want to leave a $tipPercentage% tip");
         break; // Exit loop if valid number
-      }
-      print("Invalid input! Please enter a valid number.");
+      } else 
+        print("Invalid input! Please enter a valid number.");
   }
 
   // Tip is calculated and printed
