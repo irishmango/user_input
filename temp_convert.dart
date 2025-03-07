@@ -16,7 +16,7 @@ void main() {
       fahrenheit = double.tryParse(input ?? '');
       
       if (fahrenheit != null) {
-        break; // Exit loop if valid number
+        break; // Exit while loop if valid number
       } else 
       print("Invalid input! Please enter a valid number.");
     }
@@ -34,7 +34,7 @@ void main() {
       celsius = double.tryParse(input ?? '');
       
       if (celsius != null) {
-        break; // Exit loop if valid number
+        break; // Exit while loop if valid number
       } else 
       print("Invalid input! Please enter a valid number.");
     }
