@@ -47,8 +47,8 @@ void main() {
       case "/":
         if (y == 0) {
           print("Division by zero is not allowed. Please try again.");
-          continue; // Restart the loop if division by zero
-        }
+          continue; // Restart the while loop if division by zero
+        } else 
         result = x / y;
         validInput = true;
       case "*":
@@ -56,7 +56,7 @@ void main() {
         validInput = true;
       default:
         print("Invalid input. Please enter a valid operation.");
-        continue; // Restart the loop if the user enters an invalid operation
+        continue; // Restart the while loop if the user enters an invalid operation
     }
 
     // Result is given 
