@@ -17,25 +17,25 @@ void main() {
   print("Now choose a value for y: ");
   String? inputY = stdin.readLineSync();
   y = inputY != null && inputY.isNotEmpty ? double.parse(inputY) : 0;
-  String? a = "addition";
-  String? b = "subtraction";
-  String? c = "division";
-  String? d = "multiplication";
+  String? a = "+";
+  String? b = "-";
+  String? c = "/";
+  String? d = "*";
   print("Now choose what you'd like to do with the two numbers: \n -$a \n -$b \n -$c \n -$d");
   String? inputCommand = stdin.readLineSync();
   double result;
   if (inputCommand == a) {
     result = x + y;
-    print(result);
+    print("The result is: $result");
   } else if (inputCommand == b) {
     result = x - y;
-    print(result);
+    print("The result is: $result");
   } else if (inputCommand == c) {
     result = x / y;
-    print(result);
+    print("The result is: $result");
   } else if (inputCommand == d) {
     result = x * y;
-    print(result);
+    print("The result is: $result");
   }
   
   
