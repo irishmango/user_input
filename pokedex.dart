@@ -174,7 +174,8 @@ class Pokemon {
     // 151: 'Mew',
   };
 
-  print("Which Pokemon would you like to learn about?");
+  print("Hi Trainer!");
+  print("Which Pokemon would you like to learn abou today?");
 
   while (true) {
     print("Enter the Pokédex number of the Pokémon (1 - 151):");
