@@ -3,7 +3,7 @@ import 'dart:io';
 main() {
   // User introduces themselves
   print("Hi! What can I call you?");
-  String? userName = stdin.readLineSync();
+  String? userName = stdin.readLineSync() ?? "Guest";
   print("Hi, $userName! Get ready to test your knowledge!");
   print("Press Enter to continue.");
   stdin.readLineSync();
@@ -199,4 +199,5 @@ while (true) {
 
   print("\nGreat job, $userName! You completed the quiz!");
   print("You got a score of: $score%!");
+
 }
