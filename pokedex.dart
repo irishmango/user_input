@@ -9,6 +9,9 @@ class Pokemon {
   final int specialAttack;
   final int specialDefense;
   final int speed;
+
+  Pokemon(this.number, this.name, this.hp, this.attack, this.defense, this.specialAttack, this.specialDefense, this.speed);
+  
 }
 
 void main() {
