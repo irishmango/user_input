@@ -195,8 +195,10 @@ while (true) {
   }
 }
 
+  //Calculate Score
   double score = (points / 5) * 100;
 
+  //Final Message
   print("\nGreat job, $userName! You completed the quiz!");
   print("You got a score of: $score%!");
 
