@@ -19,7 +19,7 @@ void main() {
       while (true) {
         print("What is your name?:");
         userName = stdin.readLineSync();
-        if (userName == null || userName.trim().isEmpty) {
+        if (userName == null || userName.isEmpty) {
           print("You must enter a name to register with this bank");
           continue; // Loop back and ask again
         } else {
@@ -55,8 +55,8 @@ void main() {
 
       // Add deposit to account balance
       accountBalance += depositAmount;
-      print("Thank you, $userName! You have successfully lodged €${depositAmount}.");
-      print("Your current account balance is €${accountBalance}.");
+      print("Thank you, $userName! You have successfully lodged €$depositAmount.");
+      print("Your current account balance is €$accountBalance.");
       break; // Exit the lodgement loop after successful deposit
 
     } else if (userInput == "n") {
