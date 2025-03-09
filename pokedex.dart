@@ -174,9 +174,23 @@ class Pokemon {
     // 151: 'Mew',
   };
 
-  print("Which Pokemon would you like to learn about?");
-  print("Enter the pokemon name or pokedex number:");
+  while (true) {
+    print("Enter the Pokédex number of the Pokémon (1 - 151):");
 
-  String? userInput = int.parse(stdin.readLineSync());
+    String? input = stdin.readLineSync();
+    int? userInput = int.tryParse(input ?? "");
 
- }
+    if (userInput == null) {
+      print("Invalid input! You need to enter a number.");
+      continue;
+    } else if (userInput < 1 || userInput > 151) {
+      print("Invalid number! Please enter a number between 1 and 151.");
+      continue;
+    } else {
+      print("You selected Pokémon #$userInput");
+      break;
+    }
+  }
+
+  print("Thanks for using the Pokédex!");
+} 
