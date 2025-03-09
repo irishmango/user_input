@@ -174,6 +174,8 @@ class Pokemon {
     // 151: 'Mew',
   };
 
+  print("Which Pokemon would you like to learn about?");
+
   while (true) {
     print("Enter the Pokédex number of the Pokémon (1 - 151):");
 
@@ -186,11 +188,18 @@ class Pokemon {
     } else if (userInput < 1 || userInput > 151) {
       print("Invalid number! Please enter a number between 1 and 151.");
       continue;
+    } 
+
+    var selectedPokemon = pokedex[userInput]; //Create variable of selected Pokemon
+
+    if (selectedPokemon != null) {
+      selectedPokemon.format(); //Call the format method from the Pokemon Class
     } else {
-      print("You selected Pokémon #$userInput");
-      break;
+      print("That Pokémon hasn't been added yet!");
     }
+
+    break; // Exit after showing selected Pokemon
   }
 
   print("Thanks for using the Pokédex!");
-} 
+}
