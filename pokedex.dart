@@ -12,9 +12,12 @@ class Pokemon {
 
   Pokemon(this.number, this.name, this.hp, this.attack, this.defense, this.specialAttack, this.specialDefense, this.speed); // Pokemon Constructor
 
+  void format() {
+    print(
+      "Pokedex No.: $number \nName: $name \nHP: $hp \nAttack: $attack \nDefense: $defense \nSpecial Attack: $specialAttack \nSpecial Defense \nSpeed $speed");
+  }
 }
 
-void main() {
   Map<int, Pokemon> pokedex = {
     1: Pokemon("001", "Bulbasaur", 45, 49, 49, 65, 65, 45),
     2: Pokemon("002", "Ivysaur", 60, 62, 63, 80, 80, 60),
@@ -168,5 +171,11 @@ void main() {
     150: 'Mewtwo',
     151: 'Mew',
   };
+
+  void main() {
+    print("Which Pokemon would you like to learn about?");
+    print("Enter the pokemon name or pokedex number:");
+
+    String? userInput = int.parse(stdin.readLineSync());
 
 }
