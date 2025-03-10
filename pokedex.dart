@@ -22,9 +22,9 @@ class Pokemon {
   String? textInput;
 
 
-bool isNumeric(String str) {
-  return int.tryParse(str) != null;
-}
+  bool isNumeric(String str) {
+    return int.tryParse(str) != null;
+  }
 
  void main() {
 
@@ -79,7 +79,7 @@ bool isNumeric(String str) {
     48: Pokemon("048", "Venonat", 60, 55, 50, 40, 55, 45),
     49: Pokemon("049", "Venomoth", 70, 65, 60, 90, 75, 90),
     50: Pokemon("050", "Diglett", 10, 55, 25, 35, 45, 95),
-    1: Pokemon("051", "Dugtrio", 35, 100, 50, 50, 70, 120),
+    51: Pokemon("051", "Dugtrio", 35, 100, 50, 50, 70, 120),
     52: Pokemon("052", "Meowth", 40, 45, 35, 40, 40, 90),
     53: Pokemon("053", "Persian", 65, 70, 60, 65, 65, 115),
     54: Pokemon("054", "Psyduck", 50, 52, 48, 65, 50, 55),
@@ -189,7 +189,6 @@ bool isNumeric(String str) {
     print("Enter the Pokédex number (1 - 151) or the name the Pokémon:");
 
     //User Input
-
     String? input = stdin.readLineSync();
 
 
@@ -198,21 +197,20 @@ bool isNumeric(String str) {
       continue;
     }
 
-     if (isNumeric(input)){
-      numberInput = int.tryParse(input)!; //Input translated to int
-      if (numberInput > 60) {
-        print("No Pokemon found for Pokedex number: $numberInput");
-      }
+    if (isNumeric(input)) {
 
+      numberInput = int.tryParse(input)!; //Input translated to int
+
+        if (numberInput > 60) {
+          print("No Pokemon found for Pokedex number: $numberInput");
+        }
 
       Pokemon? chosen = pokedex[numberInput];
       chosen?.format();
 
-     }
+    }
 
     if (!isNumeric(input)) {
-
-
 
       String clearedInput = input.replaceAll(' ', '');
       
@@ -226,8 +224,6 @@ bool isNumeric(String str) {
 
     }
 
-
-      }
-
   print("Thanks for using the Pokédex!");
   }
+ }
