@@ -51,26 +51,16 @@ class Pokemon {
     28: Pokemon("028", "Sandslash", 75, 100, 110, 45, 55, 65),
     29: Pokemon("029", "Nidoran", 55, 47, 52, 40, 40, 41),
     30: Pokemon("030", "Nidorina", 70, 62, 67, 55, 55, 56),
-    // 21: 'Spearow',
-    // 22: 'Fearow',
-    // 23: 'Ekans',
-    // 24: 'Arbok',
-    // 25: 'Pikachu',
-    // 26: 'Raichu',
-    // 27: 'Sandshrew',
-    // 28: 'Sandslash',
-    // 29: 'Nidoran♀',
-    // 30: 'Nidorina',
-    // 31: 'Nidoqueen',
-    // 32: 'Nidoran♂',
-    // 33: 'Nidorino',
-    // 34: 'Nidoking',
-    // 35: 'Clefairy',
-    // 36: 'Clefable',
-    // 37: 'Vulpix',
-    // 38: 'Ninetales',
-    // 39: 'Jigglypuff',
-    // 40: 'Wigglytuff',
+    31: Pokemon("031", "Nidoqueen", 90, 92, 87, 75, 85, 76),
+    32: Pokemon("032", "Nidoran♂", 46, 57, 40, 40, 40, 50),
+    33: Pokemon("033", "Nidorino", 61, 72, 57, 55, 55, 65),
+    34: Pokemon("034", "Nidoking", 81, 102, 77, 85, 75, 85),
+    35: Pokemon("035", "Clefairy", 70, 45, 48, 60, 65, 35),
+    36: Pokemon("036", "Clefable", 95, 70, 73, 95, 90, 60),
+    37: Pokemon("037", "Vulpix", 38, 41, 40, 50, 65, 65),
+    38: Pokemon("038", "Ninetales", 73, 76, 75, 81, 100, 100),
+    39: Pokemon("039", "Jigglypuff", 115, 45, 20, 45, 25, 20),
+    40: Pokemon("040", "Wigglytuff", 140, 70, 45, 85, 50, 45),
     // 41: 'Zubat',
     // 42: 'Golbat',
     // 43: 'Oddish',
@@ -191,23 +181,31 @@ class Pokemon {
     print("Enter the Pokédex number of the Pokémon (1 - 151):");
 
     String? input = stdin.readLineSync();
-    int? userInput = int.tryParse(input ?? "");
 
-    if (userInput == null) {
-      print("Invalid input! You need to enter a number.");
-      continue;
-    } else if (userInput < 1 || userInput > 151) {
-      print("Invalid number! Please enter a number between 1 and 151.");
-      continue;
-    } 
-
-    var selectedPokemon = pokedex[userInput]; //Create variable of selected Pokemon
-
-    if (selectedPokemon != null) {
-      selectedPokemon.format(); //Call the format method from the Pokemon Class
-    } else {
-      print("That Pokémon hasn't been added yet!");
+    if (input == null) {
+      print("Invalid Input")
     }
+
+    if (pokedex.containsValue(input)) {
+
+    }
+    // int? userInput = int.tryParse(input ?? "");
+
+    // if (userInput == null) {
+    //   print("Invalid input! You need to enter a number.");
+    //   continue;
+    // } else if (userInput < 1 || userInput > 151) {
+    //   print("Invalid number! Please enter a number between 1 and 151.");
+    //   continue;
+    // } 
+
+    // var selectedPokemon = pokedex[userInput]; //Create variable of selected Pokemon
+
+    // if (selectedPokemon != null) {
+    //   selectedPokemon.format(); //Call the format method from the Pokemon Class
+    // } else {
+    //   print("That Pokémon hasn't been added yet!");
+    // }
 
     break; // Exit while loop after showing selected Pokemon
   }
