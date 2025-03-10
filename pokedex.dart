@@ -10,24 +10,67 @@ class Pokemon {
   final int specialDefense;
   final int speed;
 
-  Pokemon(this.number, this.name, this.hp, this.attack, this.defense, this.specialAttack, this.specialDefense, this.speed); // Pokemon Constructor
+  Pokemon(this.number, this.name, this.hp, this.attack, this.defense, this.specialAttack, this.specialDefense, this.speed);
 
   void format() {
     print(
-      "Pokedex No.: $number \nName: $name \nHP: $hp \nAttack: $attack \nDefense: $defense \nSpecial Attack: $specialAttack \nSpecial Defense: $specialDefense \nSpeed: $speed");
+        "Pokedex No.: $number \nName: $name \nHP: $hp \nAttack: $attack \nDefense: $defense \nSpecial Attack: $specialAttack \nSpecial Defense: $specialDefense \nSpeed: $speed");
   }
 }
 
-  int numberInput = 0;
-  String? textInput;
+int numberInput = 0;
 
+bool isNumeric(String str) {
+  return int.tryParse(str) != null;
+}
 
-  bool isNumeric(String str) {
-    return int.tryParse(str) != null;
+void promptUser(Map<int, Pokemon> pokedex) {
+  print("\nEnter the Pokédex number (1 - 151), Pokémon name, or type 'exit' to quit:");
+
+  String? input = stdin.readLineSync();
+
+  if (input == null || input.isEmpty) {
+    print("Please enter something!");
+    return promptUser(pokedex);
   }
 
- void main() {
+  if (input.toLowerCase() == 'exit') {
+    print("Goodbye, Trainer!");
+    return; // Stops the loop
+  }
 
+  if (isNumeric(input)) {
+    numberInput = int.tryParse(input)!;
+
+    if (numberInput > 60) {
+      print("No Pokémon found for Pokedex number: $numberInput");
+    }
+
+    Pokemon? chosen = pokedex[numberInput];
+    if (chosen != null) {
+      chosen.format();
+    } else {
+      print("No Pokémon found for number: $numberInput");
+    }
+
+    return promptUser(pokedex);
+  }
+
+  String clearedInput = input.replaceAll(' ', '');
+
+  for (Pokemon pokemon in pokedex.values) {
+    if (pokemon.name.toLowerCase() == clearedInput.toLowerCase()) {
+      pokemon.format();
+      return promptUser(pokedex);
+    }
+  }
+
+  print("No Pokémon found with the name: $clearedInput");
+
+  promptUser(pokedex);
+}
+
+void main() {
   Map<int, Pokemon> pokedex = {
     1: Pokemon("001", "Bulbasaur", 45, 49, 49, 65, 65, 45),
     2: Pokemon("002", "Ivysaur", 60, 62, 63, 80, 80, 60),
@@ -183,47 +226,7 @@ class Pokemon {
   };
 
   print("Hi Trainer!");
-  print("Which Pokemon would you like to learn abou today?");
+  print("Which Pokémon would you like to learn about today?");
 
-  while (true) {
-    print("Enter the Pokédex number (1 - 151) or the name the Pokémon:");
-
-    //User Input
-    String? input = stdin.readLineSync();
-
-
-    if (input == null || input.isEmpty) {
-      print("Please enter something!");
-      continue;
-    }
-
-    if (isNumeric(input)) {
-
-      numberInput = int.tryParse(input)!; //Input translated to int
-
-        if (numberInput > 60) {
-          print("No Pokemon found for Pokedex number: $numberInput");
-        }
-
-      Pokemon? chosen = pokedex[numberInput];
-      chosen?.format();
-
-    }
-
-    if (!isNumeric(input)) {
-
-      String clearedInput = input.replaceAll(' ', '');
-      
-      for (Pokemon pokemon in pokedex.values) {
-          if (pokemon.name.toLowerCase() == clearedInput.toLowerCase()) {
-            pokemon.format();
-            return;
-          } 
-      }
-      print ("not found");
-
-    }
-
-  print("Thanks for using the Pokédex!");
-  }
- }
+  promptUser(pokedex);
+}
