@@ -18,6 +18,14 @@ class Pokemon {
   }
 }
 
+  int numberInput = 0;
+  String? textInput;
+
+
+bool isNumeric(String str) {
+  return int.tryParse(str) != null;
+}
+
  void main() {
 
   Map<int, Pokemon> pokedex = {
@@ -61,26 +69,26 @@ class Pokemon {
     38: Pokemon("038", "Ninetales", 73, 76, 75, 81, 100, 100),
     39: Pokemon("039", "Jigglypuff", 115, 45, 20, 45, 25, 20),
     40: Pokemon("040", "Wigglytuff", 140, 70, 45, 85, 50, 45),
-    // 41: 'Zubat',
-    // 42: 'Golbat',
-    // 43: 'Oddish',
-    // 44: 'Gloom',
-    // 45: 'Vileplume',
-    // 46: 'Paras',
-    // 47: 'Parasect',
-    // 48: 'Venonat',
-    // 49: 'Venomoth',
-    // 50: 'Diglett',
-    // 51: 'Dugtrio',
-    // 52: 'Meowth',
-    // 53: 'Persian',
-    // 54: 'Psyduck',
-    // 55: 'Golduck',
-    // 56: 'Mankey',
-    // 57: 'Primeape',
-    // 58: 'Growlithe',
-    // 59: 'Arcanine',
-    // 60: 'Poliwag',
+    41: Pokemon("041", "Zubat", 40, 45, 35, 30, 40, 55),
+    42: Pokemon("042", "Golbat", 75, 80, 70, 65, 75, 90),
+    43: Pokemon("043", "Oddish", 45, 50, 55, 75, 65, 30),
+    44: Pokemon("044", "Gloom", 60, 65, 70, 85, 75, 40),
+    45: Pokemon("045", "Vileplume", 75, 80, 85, 110, 90, 50),
+    46: Pokemon("046", "Paras", 35, 70, 55, 45, 55, 25),
+    47: Pokemon("047", "Parasect", 60, 95, 80, 60, 80, 30),
+    48: Pokemon("048", "Venonat", 60, 55, 50, 40, 55, 45),
+    49: Pokemon("049", "Venomoth", 70, 65, 60, 90, 75, 90),
+    50: Pokemon("050", "Diglett", 10, 55, 25, 35, 45, 95),
+    1: Pokemon("051", "Dugtrio", 35, 100, 50, 50, 70, 120),
+    52: Pokemon("052", "Meowth", 40, 45, 35, 40, 40, 90),
+    53: Pokemon("053", "Persian", 65, 70, 60, 65, 65, 115),
+    54: Pokemon("054", "Psyduck", 50, 52, 48, 65, 50, 55),
+    55: Pokemon("055", "Golduck", 80, 82, 78, 95, 80, 85),
+    56: Pokemon("056", "Mankey", 40, 80, 35, 35, 45, 70),
+    57: Pokemon("057", "Primeape", 65, 105, 60, 60, 70, 95),
+    58: Pokemon("058", "Growlithe", 55, 70, 45, 70, 50, 60),
+    59: Pokemon("059", "Arcanine", 90, 110, 80, 100, 80, 95),
+    60: Pokemon("060", "Poliwag", 40, 50, 40, 40, 40, 90),
     // 61: 'Poliwhirl',
     // 62: 'Poliwrath',
     // 63: 'Abra',
@@ -178,29 +186,48 @@ class Pokemon {
   print("Which Pokemon would you like to learn abou today?");
 
   while (true) {
-    print("Enter the Pokédex number of the Pokémon (1 - 151):");
+    print("Enter the Pokédex number (1 - 151) or the name the Pokémon:");
+
+    //User Input
 
     String? input = stdin.readLineSync();
-    int? userInput = int.tryParse(input ?? "");
 
-    if (userInput == null) {
-      print("Invalid input! You need to enter a number.");
+
+    if (input == null || input.isEmpty) {
+      print("Please enter something!");
       continue;
-    } else if (userInput < 1 || userInput > 151) {
-      print("Invalid number! Please enter a number between 1 and 151.");
-      continue;
-    } 
-
-    var selectedPokemon = pokedex[userInput]; //Create variable of selected Pokemon
-
-    if (selectedPokemon != null) {
-      selectedPokemon.format(); //Call the format method from the Pokemon Class
-    } else {
-      print("That Pokémon hasn't been added yet!");
     }
 
-    break; // Exit while loop after showing selected Pokemon
-  }
+     if (isNumeric(input)){
+      numberInput = int.tryParse(input)!; //Input translated to int
+      if (numberInput > 60) {
+        print("No Pokemon found for Pokedex number: $numberInput");
+      }
+
+
+      Pokemon? chosen = pokedex[numberInput];
+      chosen?.format();
+
+     }
+
+    if (!isNumeric(input)) {
+
+
+
+      String clearedInput = input.replaceAll(' ', '');
+      
+      for (Pokemon pokemon in pokedex.values) {
+          if (pokemon.name.toLowerCase() == clearedInput.toLowerCase()) {
+            pokemon.format();
+            return;
+          } 
+      }
+      print ("not found");
+
+    }
+
+
+      }
 
   print("Thanks for using the Pokédex!");
-}
+  }
