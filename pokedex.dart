@@ -41,6 +41,16 @@ class Pokemon {
     18: Pokemon("018", "Pidgeot", 83, 80, 75, 70, 70, 101),
     19: Pokemon("019", "Rattata", 30, 56, 35, 25, 35, 72),
     20: Pokemon("020", "Raticate", 55, 81, 60, 50, 70, 97),
+    21: Pokemon("021", "Spearow", 40, 60, 30, 31, 31, 70),
+    22: Pokemon("022", "Fearow", 65, 90, 65, 61, 61, 100),
+    23: Pokemon("023", "Ekans", 35, 60, 44, 40, 54, 55),
+    24: Pokemon("024", "Arbok", 60, 85, 69, 65, 79, 80),
+    25: Pokemon("025", "Pikachu", 35, 55, 40, 50, 50, 90),
+    26: Pokemon("026", "Raichu", 60, 90, 55, 90, 80, 110),
+    27: Pokemon("027", "Sandshrew", 50, 75, 85, 20, 30, 40),
+    28: Pokemon("028", "Sandslash", 75, 100, 110, 45, 55, 65),
+    29: Pokemon("029", "Nidoran", 55, 47, 52, 40, 40, 41),
+    30: Pokemon("030", "Nidorina", 70, 62, 67, 55, 55, 56),
     // 21: 'Spearow',
     // 22: 'Fearow',
     // 23: 'Ekans',
@@ -170,8 +180,8 @@ class Pokemon {
     // 147: 'Dratini',
     // 148: 'Dragonair',
     // 149: 'Dragonite',
-    // 150: 'Mewtwo',
-    // 151: 'Mew',
+    // 150: 'Mew',
+    // 151: 'Mewtwo',
   };
 
   print("Hi Trainer!");
@@ -199,7 +209,7 @@ class Pokemon {
       print("That Pokémon hasn't been added yet!");
     }
 
-    break; // Exit after showing selected Pokemon
+    break; // Exit while loop after showing selected Pokemon
   }
 
   print("Thanks for using the Pokédex!");
