@@ -181,31 +181,23 @@ class Pokemon {
     print("Enter the Pokédex number of the Pokémon (1 - 151):");
 
     String? input = stdin.readLineSync();
+    int? userInput = int.tryParse(input ?? "");
 
-    if (input == null) {
-      print("Invalid Input")
+    if (userInput == null) {
+      print("Invalid input! You need to enter a number.");
+      continue;
+    } else if (userInput < 1 || userInput > 151) {
+      print("Invalid number! Please enter a number between 1 and 151.");
+      continue;
+    } 
+
+    var selectedPokemon = pokedex[userInput]; //Create variable of selected Pokemon
+
+    if (selectedPokemon != null) {
+      selectedPokemon.format(); //Call the format method from the Pokemon Class
+    } else {
+      print("That Pokémon hasn't been added yet!");
     }
-
-    if (pokedex.containsValue(input)) {
-
-    }
-    // int? userInput = int.tryParse(input ?? "");
-
-    // if (userInput == null) {
-    //   print("Invalid input! You need to enter a number.");
-    //   continue;
-    // } else if (userInput < 1 || userInput > 151) {
-    //   print("Invalid number! Please enter a number between 1 and 151.");
-    //   continue;
-    // } 
-
-    // var selectedPokemon = pokedex[userInput]; //Create variable of selected Pokemon
-
-    // if (selectedPokemon != null) {
-    //   selectedPokemon.format(); //Call the format method from the Pokemon Class
-    // } else {
-    //   print("That Pokémon hasn't been added yet!");
-    // }
 
     break; // Exit while loop after showing selected Pokemon
   }
