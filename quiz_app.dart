@@ -11,10 +11,9 @@ void main() {
   String incorrectMessage = "Wrong Answer! Bad luck.";
   String invalidMessage = "Invalid Answer. Please enter a, b, c, or d.";
   int points = 0;
-  String? userInput;
+  String? userInput = "";
 
   // QUESTION 1
-  userInput = "";
   while (userInput != "a" && userInput != "b" && userInput != "c" && userInput != "d") {
     print("\nQUESTION 1:");
     print("What is the largest planet in the solar system?");
@@ -36,7 +35,6 @@ void main() {
   }
 
   // QUESTION 2
-  userInput = "";
   while (userInput != "a" && userInput != "b" && userInput != "c" && userInput != "d") {
     print("\nQUESTION 2:");
     print("What is the country with the largest population?");
@@ -58,7 +56,6 @@ void main() {
   }
 
   // QUESTION 3
-  userInput = "";
   while (userInput != "a" && userInput != "b" && userInput != "c" && userInput != "d") {
     print("\nQUESTION 3:");
     print("Who created Flutter?");
@@ -80,7 +77,6 @@ void main() {
   }
 
   // QUESTION 4
-  userInput = "";
   while (userInput != "a" && userInput != "b" && userInput != "c" && userInput != "d") {
     print("\nQUESTION 4:");
     print("What is the capital city of France?");
@@ -102,7 +98,6 @@ void main() {
   }
 
   // QUESTION 5
-  userInput = "";
   while (userInput != "a" && userInput != "b" && userInput != "c" && userInput != "d") {
     print("\nQUESTION 5:");
     print("Which programming language is used to develop Flutter apps?");
