@@ -8,27 +8,36 @@ void main() {
   double accountBalance = 0.0;
 
   // Ask to open an account
-  while (true) {
+  String? openAccountInput;
+  bool validAccountResponse = false;
+
+  while (!validAccountResponse) {
     print("Would you like to open an account with us today?");
     print("y or n?");
-    String? userInput = stdin.readLineSync();
+    openAccountInput = stdin.readLineSync();
 
-    if (userInput == "y") {
+    if (openAccountInput == "y") {
+      validAccountResponse = true;
       print("Great!");
+
       // Get user's name
-      while (true) {
+      String? nameInput;
+      bool validName = false;
+
+      while (!validName) {
         print("What is your name?:");
-        userName = stdin.readLineSync();
-        if (userName == null || userName.isEmpty) {
-          print("You must enter a name to register with this bank");
-          continue; // Loop back and ask again
+        nameInput = stdin.readLineSync();
+
+        if (nameInput == null || nameInput.isEmpty) {
+          print("You must enter a name to register with this bank.");
         } else {
-          break;
+          validName = true;
+          userName = nameInput;
+          print("Welcome to Dart Bank, $userName!");
         }
       }
-      print("Welcome to Dart Bank, $userName!");
-      break;
-    } else if (userInput == "n") {
+
+    } else if (openAccountInput == "n") {
       print("No problem. Have a nice day!");
       return; // End program if they don't want an account
     } else {
@@ -37,31 +46,39 @@ void main() {
   }
 
   // Ask if they want to make a deposit
-  while (true) {
+  String? depositChoice;
+  bool validDepositResponse = false;
+
+  while (!validDepositResponse) {
     print("Would you like to make a lodgement?");
     print("y or n?");
-    String? userInput = stdin.readLineSync();
+    depositChoice = stdin.readLineSync();
 
-    if (userInput == "y") {
-      print("Great! How much would you like to lodge?");
-      String? amountInput = stdin.readLineSync();
+    if (depositChoice == "y") {
+      validDepositResponse = true;
 
-      double? depositAmount = double.tryParse(amountInput ?? '');
+      String? amountInput;
+      bool validAmount = false;
 
-      if (depositAmount == null || depositAmount <= 0) {
-        print("Invalid amount! Please enter a positive number.");
-        continue; // Loop back and ask again
+      while (!validAmount) {
+        print("Great! How much would you like to lodge?");
+        amountInput = stdin.readLineSync();
+
+        double? depositAmount = double.tryParse(amountInput ?? '');
+
+        if (depositAmount == null || depositAmount <= 0) {
+          print("Invalid amount! Please enter a positive number.");
+        } else {
+          validAmount = true;
+          accountBalance += depositAmount;
+          print("Thank you, $userName! You have successfully lodged €$depositAmount.");
+          print("Your current account balance is €$accountBalance.");
+        }
       }
 
-      // Add deposit to account balance
-      accountBalance += depositAmount;
-      print("Thank you, $userName! You have successfully lodged €$depositAmount.");
-      print("Your current account balance is €$accountBalance.");
-      break; // Exit the lodgement loop after successful deposit
-
-    } else if (userInput == "n") {
+    } else if (depositChoice == "n") {
+      validDepositResponse = true;
       print("No problem, $userName! Come back anytime.");
-      break;
     } else {
       print("Invalid selection. Please enter 'y' or 'n'.");
     }
