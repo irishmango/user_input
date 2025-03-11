@@ -40,7 +40,7 @@ void promptUser(Map<int, Pokemon> pokedex) {
   // Exit condition - if user types "exit", the program stops asking
   if (input.toLowerCase() == 'exit') {
     print("Goodbye, Trainer!");
-    return; // Stops recursion and exits the function
+    return; // Stops looping and exits the function
   }
 
   // Check if the user entered a number
@@ -48,7 +48,7 @@ void promptUser(Map<int, Pokemon> pokedex) {
     // Convert the string input to an int
     int numberInput = int.tryParse(input)!;
 
-    // Optional check - limit search if you haven't filled the full Pokédex yet
+    // Optional check - limit search to amount in Map pokedex
     if (numberInput > 81) {
       print("No Pokémon found for Pokedex number: $numberInput");
       return promptUser(pokedex); // Restart prompt
@@ -71,14 +71,14 @@ void promptUser(Map<int, Pokemon> pokedex) {
   // If the user input is not numeric, treat it as a name search
   String clearedInput = input.replaceAll(' ', '');
 
-  // Flag to track if we found the Pokémon
+  // Flag to track if Pokemon is found
   bool found = false;
 
   // Loop through all Pokémon in the pokedex
   for (Pokemon pokemon in pokedex.values) {
     // Compare names ignoring spaces and casing
     if (pokemon.name.replaceAll(' ', '').toLowerCase() == clearedInput.toLowerCase()) {
-      // If found, display its stats
+      // If found, display Pokemon stats
       pokemon.format();
       found = true;
       break; // No need to search further
