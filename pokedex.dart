@@ -25,48 +25,72 @@ bool isNumeric(String str) {
 }
 
 void promptUser(Map<int, Pokemon> pokedex) {
+  // Prompt message to the user
   print("\nEnter the Pokédex number (1 - 151), Pokémon name, or type 'exit' to quit:");
 
+  // Read user input as a string
   String? input = stdin.readLineSync();
 
+  // Check if the user didn't enter anything
   if (input == null || input.isEmpty) {
     print("Please enter something!");
-    return promptUser(pokedex);
+    return promptUser(pokedex); // Restart the prompt
   }
 
+  // Exit condition - if user types "exit", the program stops asking
   if (input.toLowerCase() == 'exit') {
     print("Goodbye, Trainer!");
-    return; // Stops the loop
+    return; // Stops recursion and exits the function
   }
 
+  // Check if the user entered a number
   if (isNumeric(input)) {
-    numberInput = int.tryParse(input)!;
+    // Convert the string input to an int
+    int numberInput = int.tryParse(input)!;
 
-    if (numberInput > 60) {
+    // Optional check - limit search if you haven't filled the full Pokédex yet
+    if (numberInput > 81) {
       print("No Pokémon found for Pokedex number: $numberInput");
+      return promptUser(pokedex); // Restart prompt
     }
 
+    // Try to find the Pokémon by its number
     Pokemon? chosen = pokedex[numberInput];
+
     if (chosen != null) {
+      // If found, display its stats
       chosen.format();
     } else {
+      // If no Pokémon found at that number
       print("No Pokémon found for number: $numberInput");
     }
 
-    return promptUser(pokedex);
+    return promptUser(pokedex); // Restart prompt after showing result
   }
 
+  // If the user input is not numeric, treat it as a name search
   String clearedInput = input.replaceAll(' ', '');
 
+  // Flag to track if we found the Pokémon
+  bool found = false;
+
+  // Loop through all Pokémon in the pokedex
   for (Pokemon pokemon in pokedex.values) {
-    if (pokemon.name.toLowerCase() == clearedInput.toLowerCase()) {
+    // Compare names ignoring spaces and casing
+    if (pokemon.name.replaceAll(' ', '').toLowerCase() == clearedInput.toLowerCase()) {
+      // If found, display its stats
       pokemon.format();
-      return promptUser(pokedex);
+      found = true;
+      break; // No need to search further
     }
   }
 
-  print("No Pokémon found with the name: $clearedInput");
+  if (!found) {
+    // If no match found in the name search
+    print("No Pokémon found with the name: $clearedInput");
+  }
 
+  // Restart prompt after search (whether found or not)
   promptUser(pokedex);
 }
 
