@@ -84,5 +84,5 @@ void main() {
     }
   }
 
-  print("Thank you for visiting Dart Bank. Goodbye, $userName!");
+  print("Thank you for visiting Dart Bank. Goodbye!");
 }
